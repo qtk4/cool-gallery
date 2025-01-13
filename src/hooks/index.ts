@@ -1,3 +1,3 @@
-export { usePersistentFavouritePhotoIds } from './usePersistentFavouritePhotoIds';
-export { usePhotos } from './usePhotos';
-export { useFavouritePhotos } from './useFavouritePhotos';
+export { usePersistentFavouritePhotoIds } from './usePersistentFavouritePhotoIds/hook';
+export { usePhotos } from './usePhotos/hook';
+export { useFavouritePhotos } from './useFavouritePhotos/hook';

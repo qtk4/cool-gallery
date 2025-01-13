@@ -1,10 +1,11 @@
 import { useCallback, useRef } from 'react';
+
 import { Photo } from '../types';
 import { PhotoItem } from './PhotoItem';
 
 interface InfiniteScrollGalleryProps {
   isLoading: boolean;
-  hasMore: boolean;
+  isNextPageAvailable: boolean;
   setPageNumber: React.Dispatch<React.SetStateAction<number>>;
   photos: Photo[];
   favouritePhotoIds: number[];
@@ -14,7 +15,7 @@ interface InfiniteScrollGalleryProps {
 
 export const InfiniteScrollGallery: React.FC<InfiniteScrollGalleryProps> = ({
   isLoading,
-  hasMore,
+  isNextPageAvailable,
   setPageNumber,
   photos,
   favouritePhotoIds,
@@ -34,7 +35,7 @@ export const InfiniteScrollGallery: React.FC<InfiniteScrollGalleryProps> = ({
       }
 
       observer.current = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting && hasMore) {
+        if (entries[0].isIntersecting && isNextPageAvailable) {
           setPageNumber(prevPage => prevPage + 1);
         }
       });
@@ -43,7 +44,7 @@ export const InfiniteScrollGallery: React.FC<InfiniteScrollGalleryProps> = ({
         observer.current.observe(node);
       }
     },
-    [isLoading, hasMore],
+    [isLoading, isNextPageAvailable],
   );
 
   return photos.map((photo, index) => {

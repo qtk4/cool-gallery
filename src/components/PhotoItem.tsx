@@ -7,6 +7,7 @@ import {
   StyledPhotoCaptions,
   StyledPhotoItem,
 } from './styledComponents';
+
 import { Photo } from '../types';
 
 interface PhotoItemProps {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const localStorageId = 'favouritePhotoIds';
+import { localStorageId } from '../../constants';
 
 export const usePersistentFavouritePhotoIds = (): [
   number[],
@@ -19,6 +19,7 @@ export const usePersistentFavouritePhotoIds = (): [
 
   const handleSetFavouritePhotoIdsState = (updatedPhotoIds: number[]) => {
     localStorage.setItem(localStorageId, JSON.stringify(updatedPhotoIds));
+
     setFavouritePhotoIds(updatedPhotoIds);
   };
 

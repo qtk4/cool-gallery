@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import { StyledScrollToTop } from './styledComponents';
 
 export const ScrollToTopButton: React.FC = () => {

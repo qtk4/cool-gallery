@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { Tabs } from './constants';
 import {
   StyledAppHeader,
@@ -17,7 +18,7 @@ export const App: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState(Tabs.Gallery);
   const [pageNumber, setPageNumber] = useState<number>(1);
 
-  const { isLoading, hasMore, photos, isApiError } = usePhotos(pageNumber);
+  const { isLoading, isNextPageAvailable, photos, isApiError } = usePhotos(pageNumber);
 
   const [favouritePhotoIds, handleAddToFavourites, handleRemoveFromFavourites] =
     usePersistentFavouritePhotoIds();
@@ -51,7 +52,7 @@ export const App: React.FC = () => {
         {selectedTab === Tabs.Gallery && (
           <InfiniteScrollGallery
             photos={photos}
-            hasMore={hasMore}
+            isNextPageAvailable={isNextPageAvailable}
             isLoading={isLoading}
             setPageNumber={setPageNumber}
             favouritePhotoIds={favouritePhotoIds}

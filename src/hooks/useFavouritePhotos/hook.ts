@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Photo } from '../types';
-import { baseAPIUrl } from '../constants';
+
+import { Photo } from '../../types';
+import { baseAPIUrl } from '../../constants';
 
 interface PhotosCache {
   [photoId: number]: Photo;
@@ -13,7 +14,7 @@ export const useFavouritePhotos = (photoIds: number[]) => {
   const [cache, setCache] = useState<PhotosCache>({});
 
   useEffect(() => {
-    const fetchPictures = async () => {
+    const fetchFavouritePhotos = async () => {
       setIsLoadingFavourites(true);
       setIsApiErrorFavourites(false);
       const newPhotos: Photo[] = [];
@@ -54,7 +55,7 @@ export const useFavouritePhotos = (photoIds: number[]) => {
       }
     };
 
-    fetchPictures();
+    fetchFavouritePhotos();
   }, [JSON.stringify(photoIds)]);
 
   return { favouritePhotos, isLoadingFavourites, isApiErrorFavourites };

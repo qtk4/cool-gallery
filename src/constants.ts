@@ -4,3 +4,5 @@ export enum Tabs {
 }
 
 export const baseAPIUrl = 'https://api.pexels.com/v1';
+
+export const localStorageId = 'favouritePhotoIds';
