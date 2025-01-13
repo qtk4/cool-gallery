@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Photo, PhotosResponseResult } from '../types';
-import { baseAPIUrl, apiKey } from '../constants';
+import { baseAPIUrl } from '../constants';
 
 export const usePhotos = (pageNumber: number) => {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -12,7 +12,7 @@ export const usePhotos = (pageNumber: number) => {
     try {
       const response = await fetch(`${baseAPIUrl}/curated?page=${pageNumber}`, {
         headers: {
-          Authorization: apiKey,
+          Authorization: import.meta.env.VITE_PEXELS_API_KEY,
         },
       });
 

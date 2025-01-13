@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Photo } from '../types';
-import { apiKey, baseAPIUrl } from '../constants';
+import { baseAPIUrl } from '../constants';
 
 interface PhotosCache {
   [photoId: number]: Photo;
@@ -24,7 +24,7 @@ export const useFavouritePhotos = (photoIds: number[]) => {
         const requests = idsToFetch.map(id =>
           fetch(`${baseAPIUrl}/photos/${id}`, {
             headers: {
-              Authorization: apiKey,
+              Authorization: import.meta.env.VITE_PEXELS_API_KEY,
             },
           }).then(response => {
             if (!response.ok) {
