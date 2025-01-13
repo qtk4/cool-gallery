@@ -4,6 +4,13 @@ export const StyledAppWrapper = styled.div`
   max-width: 1260px;
   padding: 16px;
   margin: auto;
+
+  --color-white: #ffffff;
+  --color-light-grey: #737373;
+  --color-grey: #545454;
+  --color-dark-grey: #333333;
+
+  --transition: 0.5s ease;
 `;
 
 const StyledUnsetButton = styled.button.attrs({ type: 'button' })`
@@ -32,13 +39,13 @@ export const StyledTabButton = styled(StyledUnsetButton)`
   width: 116px;
   padding: 8px 12px;
   text-align: center;
-  background-color: #737373;
-  color: #fff;
+  background-color: var(--color-light-grey);
+  color: var(--color-white);
   border-radius: 6px 0 0 6px;
   transition: var(--transition);
 
   &:hover {
-    background-color: #545454;
+    background-color: var(--color-grey);
   }
 
   &:nth-child(even) {
@@ -47,7 +54,7 @@ export const StyledTabButton = styled(StyledUnsetButton)`
 
   &:disabled {
     cursor: auto;
-    background-color: #333333;
+    background-color: var(--color-dark-grey);
   }
 `;
 
