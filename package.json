@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "preview": "vite build && vite preview"
   },
   "devDependencies": {
     "@types/react": "^19.0.4",
