@@ -10,12 +10,16 @@ import {
 } from './components/styledComponents';
 import { usePhotos } from './hooks/usePhotos';
 import { InfiniteScrollGallery } from './components';
+import { usePersistentFavouritePhotoIds } from './hooks/usePersistentFavouritePhotoIds';
 
 export const App: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState(Tabs.Gallery);
   const [pageNumber, setPageNumber] = useState<number>(1);
 
   const { isLoading, hasMore, photos } = usePhotos(pageNumber);
+
+  const [favouritePhotoIds, handleAddToFavourites, handleRemoveFromFavourites] =
+    usePersistentFavouritePhotoIds();
 
   return (
     <StyledAppWrapper>
@@ -46,6 +50,9 @@ export const App: React.FC = () => {
             hasMore={hasMore}
             isLoading={isLoading}
             setPageNumber={setPageNumber}
+            favouritePhotoIds={favouritePhotoIds}
+            handleAddToFavourites={handleAddToFavourites}
+            handleRemoveFromFavourites={handleRemoveFromFavourites}
           />
         )}
 

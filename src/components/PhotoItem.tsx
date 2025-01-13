@@ -12,9 +12,18 @@ import { Photo } from '../types';
 interface PhotoItemProps {
   photo: Photo;
   ref?: (node: HTMLDivElement) => void;
+  handleRemoveFromFavourites: (photoId: number) => void;
+  handleAddToFavourites: (photoId: number) => void;
+  isPhotoFavourited: boolean;
 }
 
-export const PhotoItem: React.FC<PhotoItemProps> = ({ photo, ref }) => {
+export const PhotoItem: React.FC<PhotoItemProps> = ({
+  photo,
+  ref,
+  handleAddToFavourites,
+  handleRemoveFromFavourites,
+  isPhotoFavourited,
+}) => {
   const {
     id,
     alt,
@@ -40,7 +49,17 @@ export const PhotoItem: React.FC<PhotoItemProps> = ({ photo, ref }) => {
 
           <StyledAuthorTag>{photographer}</StyledAuthorTag>
 
-          <StyledFavouriteButton>{'Favourite'}</StyledFavouriteButton>
+          <StyledFavouriteButton
+            onClick={() => {
+              if (isPhotoFavourited) {
+                handleRemoveFromFavourites(id);
+              } else {
+                handleAddToFavourites(id);
+              }
+            }}
+          >
+            {isPhotoFavourited ? 'Unfavourite' : 'Favourite'}
+          </StyledFavouriteButton>
         </StyledPhotoCaptions>
       </figure>
     </StyledPhotoItem>
