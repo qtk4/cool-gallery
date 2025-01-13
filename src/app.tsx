@@ -8,9 +8,8 @@ import {
   StyledTabButton,
   StyledTabButtonsWrapper,
 } from './components/styledComponents';
-import { usePhotos } from './hooks/usePhotos';
-import { InfiniteScrollGallery } from './components';
-import { usePersistentFavouritePhotoIds } from './hooks/usePersistentFavouritePhotoIds';
+import { usePhotos, useFavouritePhotos, usePersistentFavouritePhotoIds } from './hooks';
+import { InfiniteScrollGallery, FavouritePhotos } from './components';
 
 export const App: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState(Tabs.Gallery);
@@ -20,6 +19,8 @@ export const App: React.FC = () => {
 
   const [favouritePhotoIds, handleAddToFavourites, handleRemoveFromFavourites] =
     usePersistentFavouritePhotoIds();
+
+  const { favouritePhotos } = useFavouritePhotos(favouritePhotoIds);
 
   return (
     <StyledAppWrapper>
@@ -38,7 +39,7 @@ export const App: React.FC = () => {
             disabled={Tabs.Favourites === selectedTab}
             onClick={() => setSelectedTab(Tabs.Favourites)}
           >
-            Favourites
+            {`Favourites (${favouritePhotoIds.length})`}
           </StyledTabButton>
         </StyledTabButtonsWrapper>
       </StyledAppHeader>
@@ -56,7 +57,13 @@ export const App: React.FC = () => {
           />
         )}
 
-        {selectedTab === Tabs.Favourites && <p>Favourites</p>}
+        {selectedTab === Tabs.Favourites && (
+          <FavouritePhotos
+            favouritePhotos={favouritePhotos}
+            handleAddToFavourites={handleAddToFavourites}
+            handleRemoveFromFavourites={handleRemoveFromFavourites}
+          />
+        )}
       </StyledPhotosGallery>
     </StyledAppWrapper>
   );
