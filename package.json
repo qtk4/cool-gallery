@@ -3,7 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "start": "vite",
+    "typecheck": "tsc -b"
+  },
   "devDependencies": {
     "@types/react": "^19.0.4",
     "@types/react-dom": "^19.0.2",
