@@ -210,3 +210,36 @@ export const StyledScrollToTop = styled(StyledUnsetButton)<{ $visible: boolean }
     background-color: var(--color-dark-grey);
   }
 `;
+
+export const StyledLoader = styled.div`
+  position: fixed;
+  bottom: 16px;
+  left: calc(50% - 29px);
+
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: var(--color-dark-grey) transparent;
+  animation: spin 1s infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(0.5turn);
+    }
+  }
+`;
+
+export const StyledError = styled.div`
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+
+  padding: 6px 8px;
+  border-radius: 3px;
+
+  font-size: 16px;
+
+  background-color: #ba0517;
+  color: var(--color-white);
+`;

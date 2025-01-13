@@ -4,6 +4,8 @@ import {
   StyledAppHeader,
   StyledAppHeading,
   StyledAppWrapper,
+  StyledError,
+  StyledLoader,
   StyledPhotosGallery,
   StyledTabButton,
   StyledTabButtonsWrapper,
@@ -15,12 +17,13 @@ export const App: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState(Tabs.Gallery);
   const [pageNumber, setPageNumber] = useState<number>(1);
 
-  const { isLoading, hasMore, photos } = usePhotos(pageNumber);
+  const { isLoading, hasMore, photos, isApiError } = usePhotos(pageNumber);
 
   const [favouritePhotoIds, handleAddToFavourites, handleRemoveFromFavourites] =
     usePersistentFavouritePhotoIds();
 
-  const { favouritePhotos } = useFavouritePhotos(favouritePhotoIds);
+  const { favouritePhotos, isApiErrorFavourites, isLoadingFavourites } =
+    useFavouritePhotos(favouritePhotoIds);
 
   return (
     <StyledAppWrapper>
@@ -65,6 +68,14 @@ export const App: React.FC = () => {
           />
         )}
       </StyledPhotosGallery>
+
+      {(isApiError || isApiErrorFavourites) && (
+        <StyledError>
+          <b>Error!</b> Failed to load photos...
+        </StyledError>
+      )}
+
+      {(isLoading || isLoadingFavourites) && <StyledLoader />}
 
       <ScrollToTopButton />
     </StyledAppWrapper>
