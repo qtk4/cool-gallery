@@ -9,7 +9,7 @@ import {
   StyledTabButtonsWrapper,
 } from './components/styledComponents';
 import { usePhotos, useFavouritePhotos, usePersistentFavouritePhotoIds } from './hooks';
-import { InfiniteScrollGallery, FavouritePhotos } from './components';
+import { InfiniteScrollGallery, FavouritePhotos, ScrollToTopButton } from './components';
 
 export const App: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState(Tabs.Gallery);
@@ -65,6 +65,8 @@ export const App: React.FC = () => {
           />
         )}
       </StyledPhotosGallery>
+
+      <ScrollToTopButton />
     </StyledAppWrapper>
   );
 };

@@ -185,3 +185,28 @@ export const StyledFavouriteButton = styled(StyledUnsetButton)`
     color: var(--color-dark-grey);
   }
 `;
+
+export const StyledScrollToTop = styled(StyledUnsetButton)<{ $visible: boolean }>`
+  display: block;
+  cursor: pointer;
+
+  visibility: ${({ $visible }) => ($visible ? 'visible' : 'hidden')};
+
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+
+  background-color: var(--color-grey);
+  color: var(--color-white);
+  width: 50px;
+  aspect-ratio: 1;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 900;
+
+  transition: var(--transition);
+
+  &:hover {
+    background-color: var(--color-dark-grey);
+  }
+`;
