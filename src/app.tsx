@@ -7,6 +7,7 @@ import {
   StyledAppWrapper,
   StyledError,
   StyledLoader,
+  StyledPexelsLink,
   StyledPhotosGallery,
   StyledTabButton,
   StyledTabButtonsWrapper,
@@ -29,7 +30,11 @@ export const App: React.FC = () => {
   return (
     <StyledAppWrapper>
       <StyledAppHeader>
-        <StyledAppHeading>Pexels Photos Previewer</StyledAppHeading>
+        <StyledAppHeading>Cool Gallery</StyledAppHeading>
+
+        <StyledPexelsLink href="https://www.pexels.com" target="_blank">
+          Photos provided by Pexels
+        </StyledPexelsLink>
 
         <StyledTabButtonsWrapper>
           <StyledTabButton

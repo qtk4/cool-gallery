@@ -29,13 +29,14 @@ export const PhotoItem: React.FC<PhotoItemProps> = ({
     id,
     alt,
     photographer,
-    src: { landscape, tiny },
     width,
     height,
+    avg_color,
+    src: { landscape, tiny },
   } = photo;
 
   return (
-    <StyledPhotoItem key={id} ref={ref} $placeholderUrl={tiny}>
+    <StyledPhotoItem key={id} ref={ref} $placeholderUrl={tiny} $placeholderColor={avg_color}>
       <figure>
         <StyledPhoto src={landscape} alt={alt} width={width} height={height} />
 

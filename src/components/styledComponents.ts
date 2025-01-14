@@ -37,6 +37,8 @@ const StyledUnsetButton = styled.button.attrs({ type: 'button' })`
 `;
 
 export const StyledAppHeader = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-bottom: 36px;
 `;
 
@@ -44,8 +46,28 @@ export const StyledAppHeading = styled.h1`
   text-align: center;
   font-size: 26px;
   font-weight: 900;
-  margin: 24px 0 36px;
+  margin: 24px 0 0 0;
   color: var(--color-grey);
+`;
+
+export const StyledPexelsLink = styled.a`
+  margin: 8px auto 24px;
+  text-align: center;
+  color: var(--color-grey);
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: var(--color-dark-grey);
+  }
+
+  &:visited {
+    color: #a269a2;
+  }
 `;
 
 export const StyledTabButtonsWrapper = styled.div`
@@ -83,7 +105,7 @@ export const StyledPhotosGallery = styled.div`
   gap: var(--gallery-gap);
 `;
 
-export const StyledPhotoItem = styled.div<{ $placeholderUrl: string }>`
+export const StyledPhotoItem = styled.div<{ $placeholderUrl: string; $placeholderColor: string }>`
   position: relative;
   overflow: hidden;
   border-radius: 6px;
@@ -98,7 +120,8 @@ export const StyledPhotoItem = styled.div<{ $placeholderUrl: string }>`
     z-index: -1;
     position: absolute;
     transition: var(--transition);
-    background-color: var(--color-light-grey);
+    background-color: ${({ $placeholderColor }) =>
+      $placeholderColor ? $placeholderColor : 'var(--color-light-grey)'};
     background-image: ${({ $placeholderUrl }) => `url(${$placeholderUrl})`};
     background-repeat: no-repeat;
     background-size: cover;
